@@ -10,6 +10,7 @@ MySQL 5
 Installation
 ------------
 cd /directory/to/put/code/in
+
 git clone git://github.com/jbeale/280Project.git --recursive
 
 
