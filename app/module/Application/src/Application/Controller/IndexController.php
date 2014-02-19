@@ -19,4 +19,10 @@ class IndexController extends AbstractActionController
         $vm = new ViewModel();
         return $vm;
     }
+
+    public function testingAction()
+    {
+        $vm = new ViewModel();
+        return $vm;
+    }
 }

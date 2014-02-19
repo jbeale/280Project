@@ -1,0 +1,28 @@
+<?php
+$title = "Sign In";
+$this->headTitle($title);
+echo "You are ".($loggedIn != false ? "" : "NOT")." logged in!";
+?>
+
+<h1>Sign In</h1>
+<p>Sign into Food280 to access your recipes, post new recipes, access MyFridge, and more.</p>
+<?php if ($error) : ?>
+<div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span>Invalid username or password. Please try again.</div>
+<?php endif ?>
+<form role="form" name="loginForm" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username or email" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p>Or, <a href="javascript:void(0)" id="fb-signin">sign in using Facebook.</a></p>
+
+
+</form>
+<hr>
+<h3>Forgot your password?</h3>
+<button type="button" class="btn btn-default">Reset Password</button>
