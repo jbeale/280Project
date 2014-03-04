@@ -10,6 +10,10 @@
         ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
     ?>
 
+    <!-- Typekit -->
+    <script type="text/javascript" src="//use.typekit.net/pxd1cjj.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon2.ico'))
         ->prependStylesheet($this->basePath() . '/css/style.css')
@@ -26,34 +30,38 @@
 </head>
 
 <body>
-<div class="mainHeader">
-    <div class="headerText">
-        FOOD280<br>
-        Find it. Make it. Enjoy it. Share it.
-    </div>
-</div>
 <nav class="navbar navbar-green" role="navigation">
     <div class="container">
-        <a class="navbar-brand" href="<?= $this->basePath();?>">food280</a>
-        <ul class="nav navbar-nav">
-            <li><a href="#login">Login</a></li>
-            <li><a href="./register">Register</a></li>
-        </ul>
-        <ul class="navbar navbar-nav navbar-right">
-            <form class="navbar-form" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search Recipes">
-                </div>
-            </form>
-        </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation"</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">FOOD280</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/user/login">Login</a></li>
+                <li><a href="/user/register">Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search Recipes">
+                    </div>
+                </form>
+            </ul>
+        </div>
 
     </div>
 </nav>
 
-<div class="container" style="width: 100%;">
+<div class="container">
     <?php echo $this->content; ?>
     <footer>
-        <p>&copy; 20014 - <?php echo date('Y') ?> by food280 Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+        <p>&copy; <?php echo date('Y') ?> by food280 Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
     </footer>
     <?php echo $this->inlineScript() ?>
 </div>
