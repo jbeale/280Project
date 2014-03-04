@@ -130,6 +130,13 @@ h1 {
 
 }
 
+/* HOMEPAGE */
+.jumbotron {
+    background-image:url("../img/homepagebg.jpg");
+    color:white;
+    text-shadow:2px 2px 5px black;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
