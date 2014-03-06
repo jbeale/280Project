@@ -14,6 +14,11 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+
+    public function __constructor() {
+
+    }
+
     public function indexAction()
     {
         $vm = new ViewModel();

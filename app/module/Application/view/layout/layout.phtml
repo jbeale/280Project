@@ -45,6 +45,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="/user/login">Login</a></li>
                 <li><a href="/user/register">Register</a></li>
+                <li><a href="/recipe">Recipes</a></li>
+                <li><a href="/fridge">My Fridge</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form" role="search">
@@ -61,7 +63,7 @@
 <div class="container">
     <?php echo $this->content; ?>
     <footer>
-        <p>&copy; <?php echo date('Y') ?> by food280 Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+        <p>&copy; <?php echo date('Y') ?> by food280 Group. <?php echo $this->translate('All rights reserved.') ?></p>
     </footer>
     <?php echo $this->inlineScript() ?>
 </div>

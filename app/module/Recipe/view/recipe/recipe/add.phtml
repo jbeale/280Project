@@ -1,0 +1,131 @@
+ <?php
+ $title = 'Add new recipe';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <?php
+ $form->setAttribute('action', $this->url('recipe', array('action' => 'add')));
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ 
+ echo $this->formHidden($form->get('recID'));
+ //echo $this->formRow($form->get('recName'));
+ //echo $this->formRow($form->get('ingred'));
+ //echo $this->formRow($form->get('instruct'));
+ //echo $this->formRow($form->get('prepTime'));
+ //echo $this->formRow($form->get('image'));
+ //echo $this->formRow($form->get('difficulty'));
+
+ //echo $this->formSubmit($form->get('submit'));
+ //echo $this->form()->closeTag();
+
+ 
+?>
+<div class="row">
+    <div class="well">
+        <div style="font-size: large;">
+            Recipe name: <?php echo $this->formElement($form->get('recName')).$this->formElementErrors($form->get('recName')); ?>
+            <?php //echo $this->formElementErrors($form->get('recName')); ?>
+            <div class="pull-right"><?php echo $this->formSubmit($form->get('submit')); ?></div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ingredients</h3>
+            </div>
+            <div class="panel-body">
+                List all ingredients:
+                <?php echo $this->formElement($form->get('ingred')); ?>
+                <?php echo $this->formElementErrors($form->get('ingred')); ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Instructions</h3>
+            </div>
+            <div class="panel-body">
+                Provide Instructions:
+                <?php echo $this->formElement($form->get('instruct')); ?>
+                <?php echo $this->formElementErrors($form->get('instruct')); ?>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Image Upload</h3>
+            </div>
+            <div class="panel-body">
+                <p>Select a image to upload.</p>
+                <br>
+<!--                <input size="30" name="file" type="file">-->
+                <?php echo $this->formElement($form->get('image')); ?>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Time and Difficulty</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="well-sm">
+                            Select Difficulty
+                            <div class="pull-right">
+                                <?php echo $this->formElement($form->get('difficulty')); ?>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">Time (estimate)
+                        <ul>
+                            <li>
+                                <div class="well-sm">
+                                    Prep Time
+                                    <div class="pull-right">
+                                        <?php echo $this->formElement($form->get('prepTime')); ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="well-sm">
+                                    Cook Time
+                                    <div class="pull-right">
+                                        <?php echo $this->formElement($form->get('cookTime')); ?>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>            
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Recipe Categories</div>
+            <div class="panel-body">
+                <p>Select all the apply to the recipe</p>
+            
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">Gluten Free<div class="pull-right"><?php echo  $this->formElement($form->get('glutfree')); ?></div></li>
+                    <li class="list-group-item">Low Carb<div class="pull-right"><?php echo  $this->formElement($form->get('lowcarb')); ?></div></li>
+                    <li class="list-group-item">Low calorie<div class="pull-right"><?php echo  $this->formElement($form->get('lowcal')); ?></div></li>
+                    <li class="list-group-item">Vegetarian<div class="pull-right"><?php echo  $this->formElement($form->get('veget')); ?></div></li>
+                    <li class="list-group-item">Carnivore<div class="pull-right"><?php echo  $this->formElement($form->get('carnivore')); ?></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>
