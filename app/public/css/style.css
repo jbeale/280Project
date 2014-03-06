@@ -162,3 +162,14 @@ h1 {
     min-width: 100%;
     height: 500px;
 }
+
+.recipeHead
+{
+    font-weight: bold;
+}
+
+textarea.recipe {
+    resize: none;
+    width: 98%;
+    height: 500px;
+}
