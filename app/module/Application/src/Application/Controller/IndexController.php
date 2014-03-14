@@ -9,25 +9,34 @@
 
 namespace Application\Controller;
 
+use Users\Util\LoginSessionDelegate;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    protected $vars = array();
+    public function buildView() {
+        return new ViewModel($this->vars);
+    }
+    public function pushVar($key, $value) {
+        $this->vars[$key] = $value;
+    }
 
-    public function __constructor() {
-
+    public function __construct() {
+        $loginService = new LoginSessionDelegate();
+        $this->pushVar("userInfo", $loginService->getCurrentUser());
+        $this->layout()->setVariable("userInfo", $loginService->getCurrentUser());
     }
 
     public function indexAction()
     {
-        $vm = new ViewModel();
-        return $vm;
+        //echo $this->vars['userInfo']->username;
+        return $this->buildView();
     }
 
     public function testingAction()
     {
-        $vm = new ViewModel();
-        return $vm;
+        return $this->buildView();
     }
 }

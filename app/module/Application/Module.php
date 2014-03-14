@@ -9,6 +9,7 @@
 
 namespace Application;
 
+use Users\Util\LoginSessionDelegate;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -19,6 +20,12 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+
+        //INJECT CURRENTLY LOGGED IN USER DATA INTO LAYOUT
+        $viewModel = $e->getViewModel();
+        $userService = new LoginSessionDelegate();
+        $viewModel->userInfo = $userService->getCurrentUser();
     }
 
     public function getConfig()

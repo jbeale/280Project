@@ -43,8 +43,13 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <?php if ($this->userInfo == null) { ?>
                 <li><a href="/user/login">Login</a></li>
                 <li><a href="/user/register">Register</a></li>
+                <?php } else { ?>
+                <li><a href="/user/profile">Welcome, <?php echo $this->userInfo->username; ?></a></li>
+                <li><a href="/user/logout">Sign Out</a></li>
+                <?php } ?>
                 <li><a href="/recipe">Recipes</a></li>
                 <li><a href="/fridge">My Fridge</a></li>
             </ul>

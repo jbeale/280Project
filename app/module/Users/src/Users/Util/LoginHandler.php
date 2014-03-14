@@ -31,6 +31,7 @@ class LoginHandler implements AbstractLoginHandler
     public function logout()
     {
         $this->sessionContainer->currentUser = null;
+        header("Location: ./login");
     }
 
     private function setSession(User $user)

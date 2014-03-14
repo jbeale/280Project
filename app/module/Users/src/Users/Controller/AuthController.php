@@ -24,7 +24,7 @@ class AuthController extends AbstractActionController
 
             //try to login
             $loginResult = $this->loginHandler->login($_POST['username'], $_POST['password']);
-            echo $loginResult;
+           // echo $loginResult;
             if ($loginResult != AuthenticationResult::SUCCESS) {
                 $vars['error'] = true;
             }
@@ -44,7 +44,7 @@ class AuthController extends AbstractActionController
     {
         if (isset($_POST['username']))
         {
-            echo "SUBMITTED";
+            //echo "SUBMITTED";
             $user = new User();
             $user->username = $_POST['username'];
             $user->password = PasswordCryptographyProvider::EncryptPassword($_POST['password']);
