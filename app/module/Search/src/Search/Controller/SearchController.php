@@ -72,6 +72,24 @@ class SearchController extends AbstractActionController {
         return $viewmodel;
     }
 
+    public function resultAction() {
+        $this->luceneIndex = LuceneHelper::GetLuceneIndex();
+
+        $results = $this->luceneIndex->search($_GET['q']);
+
+        $hits = array();
+        foreach($results as $hit) {
+            $hit->document = IndexedDocument::extractDocument($hit);
+            array_push($hits, $hit);
+        }
+
+        $viewmodel = new ViewModel(array(
+            'hits' => $hits
+        ));
+
+        return $viewmodel;
+    }
+
 
     //TODO THIS SHOULD NOT BE IN HERE
     public function getRecipeTable()

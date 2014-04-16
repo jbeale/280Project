@@ -27,9 +27,11 @@ class AuthController extends AbstractActionController
            // echo $loginResult;
             if ($loginResult != AuthenticationResult::SUCCESS) {
                 $vars['error'] = true;
+            } else {
+                $vars['loggedIn'] = $this->loginHandler->authenticated();
+                return $this->redirect()->toUrl("/");
             }
         }
-        $vars['loggedIn'] = $this->loginHandler->authenticated();
 
 
         return new ViewModel($vars);

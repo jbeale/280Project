@@ -69,6 +69,18 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new User());
                     return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
                 },
+                'Users\Model\FacebookTable' => function($sm) {
+                    $tableGateway = $sm->get("FacebookTableGateway");
+                    $table = new UserTable($tableGateway);
+                    return $table;
+
+                },
+                'FacebookTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new USer());
+                    return new TableGateway('user_facebook', $dbAdapter, null, $resultSetPrototype);
+                }
             )
         );
     }

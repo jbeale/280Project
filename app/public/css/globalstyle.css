@@ -1,0 +1,90 @@
+/* This is basically for any pages that aren't the homepage */
+
+body {
+    background-image: url("../img/globalbg.jpg");
+    background-attachment: fixed;
+    font-family:"Freight-Sans-Pro";
+
+}
+
+h1, h2, h3, h4 {
+    font-family:"Freight-Sans-Pro";
+}
+
+.container {
+    box-shadow: #000 3px 3px 19px -2px;
+    background-color:#FFF;
+    margin-top:20px;
+    padding: 0px 20px 20px 20px;
+}
+
+/*NAV*/
+.navbar-green {
+    position:relative;
+    /*top: -8px;*/
+    background-color: #77AC42;
+    border-color: #77AC42;
+
+    border-radius: 0px;
+
+    font-family:"Freight-Sans-Pro";
+    margin-bottom:0px;
+}
+.navbar-green .navbar-brand {
+    color: #ecf0f1;
+}
+.navbar-green .navbar-brand:hover, .navbar-green .navbar-brand:focus {
+    color: #ccffcc;
+}
+.navbar-green .navbar-text {
+    color: #ecf0f1;
+}
+.navbar-green .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+.navbar-green .navbar-nav > li > a:hover, .navbar-green .navbar-nav > li > a:focus {
+    /*       color: #ecdbff;*/
+    color: #000;
+    background-color: #77AC42;
+}
+.navbar-green .navbar-nav > .active > a, .navbar-green .navbar-nav > .active > a:hover, .navbar-green .navbar-nav > .active > a:focus {
+    color: #ecdbff;
+    background-color: #77AC42;
+}
+.navbar-green .navbar-nav > .open > a, .navbar-green .navbar-nav > .open > a:hover, .navbar-green .navbar-nav > .open > a:focus {
+    color: #ecdbff;
+    background-color: #77AC42;
+}
+.navbar-green .navbar-toggle {
+    border-color: #77AC42;
+}
+.navbar-green .navbar-toggle:hover, .navbar-green .navbar-toggle:focus {
+    background-color: #77AC42;
+}
+.navbar-green .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+.navbar-green .navbar-collapse,
+.navbar-green .navbar-form {
+    border-color: #ecf0f1;
+}
+.navbar-green .navbar-link {
+    color: #ecf0f1;
+}
+.navbar-green .navbar-link:hover {
+    color: #ecdbff;
+}
+
+@media (max-width: 767px) {
+    .navbar-green .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+        font-size:14px;
+    }
+    .navbar-green .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-green .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ecdbff;
+    }
+    .navbar-green .navbar-nav .open .dropdown-menu > .active > a, .navbar-green .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-green .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ecdbff;
+        background-color: #77AC42;
+    }
+}

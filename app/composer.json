@@ -34,6 +34,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
-        "zendframework/zendsearch" : ">=0.1"
+        "zendframework/zendsearch" : ">=0.1",
+        "facebook/php-sdk" : "*"
     }
 }

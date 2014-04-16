@@ -1,0 +1,23 @@
+<?php
+$this->headTitle("Search Results");
+?>
+
+<h1>Search Results <span class="itemsfound">Found <?php echo count($hits); ?> items in <?php echo $searchtime; ?> seconds</span></h1>
+<hr />
+<?php foreach ($hits as $hit) : ?>
+
+<div class="searchresult">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $hit->id; ?>">
+            <h4 class="panel-title">
+                <?php echo $this->escapeHtml($hit->document->name); ?>
+            </h4>
+        </a>
+    </div>
+    <div class="panel-collapse collapse">
+        <div class="panel-body">
+
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>

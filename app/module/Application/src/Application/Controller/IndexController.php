@@ -31,6 +31,7 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
+        $this->layout('layout/homelayout');
         //echo $this->vars['userInfo']->username;
         return $this->buildView();
     }

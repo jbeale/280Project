@@ -16,7 +16,7 @@
 
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon2.ico'))
-        ->prependStylesheet($this->basePath() . '/css/globalstyle.css')
+        ->prependStylesheet($this->basePath() . '/css/style.css')
         ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
 
@@ -31,7 +31,7 @@
 
 <body>
 <nav class="navbar navbar-green" role="navigation">
-
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation"</span>
@@ -44,28 +44,25 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <?php if ($this->userInfo == null) { ?>
-                    <li><a href="/user/login">Login</a></li>
-                    <li><a href="/user/register">Register</a></li>
+                <li><a href="/user/login">Login</a></li>
+                <li><a href="/user/register">Register</a></li>
                 <?php } else { ?>
-                    <li><a href="/recipe">Recipes</a></li>
-                    <li><a href="/fridge">My Fridge</a></li>
-
+                <li><a href="/user/profile">Welcome, <?php echo $this->userInfo->username; ?></a></li>
+                <li><a href="/user/logout">Sign Out</a></li>
                 <?php } ?>
-                <li><form class="navbar-form" role="search">
+                <li><a href="/recipe">Recipes</a></li>
+                <li><a href="/fridge">My Fridge</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search Recipes">
                     </div>
                 </form>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <?php if ($this->userInfo != null) { ?>
-                <li><a href="/user/profile">Welcome, <?php echo $this->userInfo->username; ?></a></li>
-                <li><a href="/user/logout">Sign Out</a></li>
-                <?php } ?>
             </ul>
         </div>
 
+    </div>
 </nav>
 
 <div class="container">

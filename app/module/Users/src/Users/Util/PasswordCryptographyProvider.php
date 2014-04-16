@@ -10,7 +10,7 @@ class PasswordCryptographyProvider
     public static $PASSWORD_SALT = "KevinDurantIsABasketballPlayer!11%3234#";
     public static $TIME_COMPLEXITY = 15;
 
-    public static function EncryptPassword ( $password)
+    public static function EncryptPassword ( $password )
     {
         $bcrypt = new Bcrypt(array(
             'salt' => PasswordCryptographyProvider::$PASSWORD_SALT,
@@ -21,7 +21,7 @@ class PasswordCryptographyProvider
         return $securePass;
     }
 
-    public static function VerifyPassword( $given,  $encryptedPass)
+    public static function VerifyPassword( $given,  $encryptedPass )
     {
         $bcrypt = new Bcrypt();
         return $bcrypt->verify($given, $encryptedPass);
