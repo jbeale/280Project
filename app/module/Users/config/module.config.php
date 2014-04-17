@@ -3,7 +3,8 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Users\Controller\Auth' => 'Users\Controller\AuthController',
+            'Users\Controller\Facebook' => 'Users\Controller\FacebookController',
+            'Users\Controller\Auth' => 'Users\Controller\AuthController'
         ),
     ),
     'router' => array(
@@ -22,6 +23,20 @@ return array(
                     ),
                 ),
             ),
+            'fb' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/facebook[/][:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Users\Controller\Facebook',
+                        'action'     => 'auth',
+                    ),
+                ),
+            ),
         ),
     ),
     'view_manager' => array(
@@ -29,6 +44,7 @@ return array(
             'users' => __DIR__ . '/../view',
         ),
     ),
+
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -42,6 +58,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
 );

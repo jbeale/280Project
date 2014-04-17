@@ -44,7 +44,8 @@ class UserTable
         $data = array(
             'username' => $user->username,
             'password' => $user->password,
-            'email'    => $user->email
+            'email'    => $user->email,
+            'name'     => $user->name
         );
         $this->tableGateway->insert($data);
     }

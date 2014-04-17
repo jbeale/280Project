@@ -4,6 +4,7 @@ namespace Users\Util;
 
 use Users\Model\UserTable;
 use Users\Model\User;
+use Zend\Authentication\Validator\Authentication;
 use Zend\Session\Container;
 
 class LoginHandler implements AbstractLoginHandler
@@ -26,6 +27,15 @@ class LoginHandler implements AbstractLoginHandler
             return AuthenticationResult::SUCCESS;
         }
         return AuthenticationResult::INVALID_CREDENTIALS;
+    }
+
+    public function loginWithId($userId) {
+        $user = $this->userTable->getUser($userId);
+        if ($user == null)
+            return AuthenticationResult::INVALID_CREDENTIALS;
+
+        $this->setSession($user);
+        return AuthenticationResult::SUCCESS;
     }
 
     public function logout()

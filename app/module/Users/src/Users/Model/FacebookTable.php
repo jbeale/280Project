@@ -14,12 +14,13 @@ class FacebookTable
 
     public function getUserIdFromFacebookId($facebookId) {
         $id = (int)$facebookId;
+
         $rowset = $this->tableGateway->select(array('facebookId' => $id));
         $row = $rowset->current();
         if (!$row) {
             return null;
         }
-        return $row;
+        return $row->userId;
     }
 
     public function linkUser($userId, $facebookId)

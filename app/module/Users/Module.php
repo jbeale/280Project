@@ -3,8 +3,10 @@
 namespace Users;
 
 
+use Users\Model\FacebookLink;
 use Users\Model\User;
 use Users\Model\UserTable;
+use Users\Model\FacebookTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\ModuleRouteListener;
@@ -71,14 +73,14 @@ class Module
                 },
                 'Users\Model\FacebookTable' => function($sm) {
                     $tableGateway = $sm->get("FacebookTableGateway");
-                    $table = new UserTable($tableGateway);
+                    $table = new FacebookTable($tableGateway);
                     return $table;
 
                 },
                 'FacebookTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new USer());
+                    $resultSetPrototype->setArrayObjectPrototype(new FacebookLink());
                     return new TableGateway('user_facebook', $dbAdapter, null, $resultSetPrototype);
                 }
             )

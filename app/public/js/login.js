@@ -22,19 +22,45 @@ function facebookLogin() {
 }
 
 function handleToken(accessToken) {
-    $.get("user/facebook/" + accessToken, function(data) {
-        if (data == "invalid") {
-            alert("FB problem");
-            $("#lightbox_overlay").fadeOut();
-        } else if (data == "no_sso") {
-            currentFacebookToken = accessToken;
-            goToSSOAssociation();
-        } else if (data !== "") {
-            var result = jQuery.parseJSON(data);
-            token = result.token;
-            $("#current_user").html("Logged in as " + result.cn);
-            goToCourseSelect();
-            //location.href = createLaunchUrl(token);
+    var request = $.ajax({
+        type: "POST",
+        url: "/facebook/auth",
+        data: { token : accessToken },
+        dataType: "json"
+
+    });
+
+    request.success(function(data) {
+        if(data.status == "invalid_token") {
+            alert("FAIL");
+        } else if (data.status == "nolink") {
+
+        } else if (data.status == "success") {
+            location.href = "/";
         }
     });
+
+
 }
+
+$(document).ready(function() {
+    $("#fb-signin").click(function() {
+        facebookLogin();
+    });
+});
+
+// Load the SDK Asynchronously
+(function(d) {
+    var js, id = 'facebook-jssdk',
+        ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement('script');
+    js.id = id;
+    js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+
+
+}(document));
