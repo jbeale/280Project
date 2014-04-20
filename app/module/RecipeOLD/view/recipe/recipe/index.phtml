@@ -1,0 +1,87 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+$recNum = 1;
+$title = 'My Recipe';
+$this->headTitle($title);
+?>
+<!-- <h1><?php // echo $this->escapeHtml($title);  ?></h1>-->
+<h1>Recipes</h1>
+<!-- <table class="table">
+ <tr>
+     <th>rec_Id</th>
+     <th>recName</th>
+     <th>ingred</th>
+     <th>instruct</th>
+ </tr>
+<?php //foreach ($recipes as $recipe) : ?>
+ <tr>
+     <td><?php //echo $this->escapeHtml($recipe->recID); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->recName); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->ingred); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->instruct); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->prepTime); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->cookTime); ?></td>
+     <td><?php //echo $this->escapeHtml($recipe->image); ?></td>
+ </tr>
+<?php //endforeach; ?>
+ </table>-->
+
+<div class="row">
+    <div class="col-md-2">
+        <p>
+            search filters
+        </p>
+        <p>
+            other options
+        </p>
+        <p>
+            <a href="<?php echo $this->url('recipe', array('action' => 'add'));
+                //echo $this->url() . "add"; ?>">Add new Recipe</a>
+        </p>
+    </div>
+
+    <div class="col-md-9">
+        <div class="panel-group" id="accordion">
+            <?php foreach ($recipes as $recipe) : ?>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $recNum; ?>">
+                            <h4 class="panel-title">
+                                <?php echo $this->escapeHtml($recipe->recName); ?>
+                            </h4>
+                        </a>
+                    </div>
+                    <div id="<?php echo $recNum; ?>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table width="98%">
+                                <tr><th>Ingredients</th><th>Instructions</th><th></th>
+                                <tr>
+                                    <td>
+                                        <?php echo $this->escapeHtml($recipe->ingred); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $this->escapeHtml($recipe->instruct); ?>
+                                    </td>
+                                    <td>
+                                        Prep Time: <?php echo $this->escapeHtml($recipe->prepTime); ?>
+                                        <br>
+                                        Cook Time: <?php echo $this->escapeHtml($recipe->cookTime); ?>
+                                        <br>
+                                        Difficulty: <?php echo $this->escapeHtml($recipe->difficulty); ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            <?php
+                $recNum++;
+                endforeach;
+            ?>
+        </div>    
+    </div>
+
+    <div class="col-md-1"></div>
+</div>

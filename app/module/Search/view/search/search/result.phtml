@@ -2,16 +2,23 @@
 $this->headTitle("Search Results");
 ?>
 
-<h1>Search Results <span class="itemsfound">Found <?php echo count($hits); ?> items in <?php echo $searchtime; ?> seconds</span></h1>
+<h1>Search Results <span class="itemsfound">Found <?php echo count($hits); ?> items in <?php echo $searchtime; ?> &micro;s</span></h1>
 <hr />
+<?php if (count($hits) == 0) { ?>
+    <strong>No results found.</strong> We recommend the following actions:
+    <ul>
+        <li>Change your search to be less specific or for something related to what you are searching for.</li>
+        <li>If the recipe you're looking for isn't in our database, search a different site and if you find a good one, add it to ours!</li>
+    </ul>
+<?php } ?>
 <?php foreach ($hits as $hit) : ?>
 
 <div class="searchresult">
     <div class="panel-heading">
-        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $hit->id; ?>">
-            <h4 class="panel-title">
-                <?php echo $this->escapeHtml($hit->document->name); ?>
-            </h4>
+        <a data-toggle="collapse" data-parent="#accordion" href="/recipe">
+            <h3 class="panel-title">
+                <a href="/recipe"><?php echo $this->escapeHtml($hit->document->name); ?></a>
+            </h3>
         </a>
     </div>
     <div class="panel-collapse collapse">

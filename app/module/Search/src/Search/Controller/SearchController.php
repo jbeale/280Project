@@ -73,6 +73,9 @@ class SearchController extends AbstractActionController {
     }
 
     public function resultAction() {
+
+         $startTime = microtime();
+
         $this->luceneIndex = LuceneHelper::GetLuceneIndex();
 
         $results = $this->luceneIndex->search($_GET['q']);
@@ -82,9 +85,13 @@ class SearchController extends AbstractActionController {
             $hit->document = IndexedDocument::extractDocument($hit);
             array_push($hits, $hit);
         }
+        $endTime = microtime();
+        $searchtime = ($endTime - $startTime);
+
 
         $viewmodel = new ViewModel(array(
-            'hits' => $hits
+            'hits' => $hits,
+            'searchtime' => $searchtime
         ));
 
         return $viewmodel;

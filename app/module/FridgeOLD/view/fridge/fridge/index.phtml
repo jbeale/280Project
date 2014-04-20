@@ -1,0 +1,81 @@
+<?php
+$title = 'Fridge';
+$this->headTitle($title);
+?>
+<h1>My Fridge</h1>
+
+<div class="row">
+    <div class="col-md-2">sorting options</div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Items in your Fridge</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <?php foreach ($fridgeItems as $item): ?> 
+                        <li class="list-group-item">
+                            <div class="well-sm">
+                                <?php echo $this->escapeHtml($item->itemID); ?>
+                                <?php echo $this->escapeHtml($item->itemName); ?>
+                                <div class="pull-right">
+                                    <?php echo $this->escapeHtml($item->itemAmount); ?> | <?php echo $this->escapeHtml($item->expireDate); ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <?php
+            $form->setAttribute('action', $this->url('fridge', array('action' => 'add')));
+            $form->prepare();
+
+            echo $this->form()->openTag($form);
+
+            echo $this->formHidden($form->get('itemID'));
+        ?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add Item to the Fridge</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="well-sm">
+                            Item Name
+                            <div class="pull-right">
+                                <?php echo $this->formElement($form->get('itemName')); ?>
+                                <?php echo $this->formElementErrors($form->get('itemName')); ?>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">Time (estimate)
+                        <ul>
+                            <li>
+                                <div class="well-sm">
+                                    Amount
+                                    <div class="pull-right">
+                                        <?php echo $this->formElement($form->get('itemAmount')); ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="well-sm">
+                                    Expire Date
+                                    <div class="pull-right">
+                                        <?php echo $this->formElement($form->get('expireDate')); ?>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="pull-right"><?php echo $this->formSubmit($form->get('submitAdd'));?></div>
+            </div>
+        </div> 
+    <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

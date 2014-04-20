@@ -27,6 +27,10 @@ return array(
          'template_path_stack' => array(
              'recipe' => __DIR__ . '/../view',
          ),
+         'strategies' => array(
+            'ViewJsonStrategy',
+        ),
      ),
+    
  );
 

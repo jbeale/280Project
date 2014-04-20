@@ -26,7 +26,7 @@
 
      public function exchangeArray($data)
      {
-         $this->rec_Id     = (isset($data['recID']))     ? $data['recID']     : null;
+         $this->recID     = (isset($data['recID']))     ? $data['recID']     : null;
          $this->recName     = (isset($data['recName']))     ? $data['recName']     : null;
          $this->prepTime  = (isset($data['prepTime']))  ? $data['prepTime']  : null;
          $this->cookTime  = (isset($data['prepTime']))  ? $data['prepTime']  : null;

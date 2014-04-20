@@ -4,12 +4,13 @@
  ?>
  <h1><?php echo $this->escapeHtml($title); ?></h1>
  <?php
- $form->setAttribute('action', $this->url('recipe', array('action' => 'add')));
- $form->prepare();
+ $addForm = $form;
+ $addForm->setAttribute('action', $this->url('recipe', array('action' => 'add')));
+ $addForm->prepare();
 
- echo $this->form()->openTag($form);
+ echo $this->form()->openTag($addForm);
  
- echo $this->formHidden($form->get('recID'));
+ echo $this->formHidden($addForm->get('recID'));
  //echo $this->formRow($form->get('recName'));
  //echo $this->formRow($form->get('ingred'));
  //echo $this->formRow($form->get('instruct'));
@@ -25,9 +26,9 @@
 <div class="row">
     <div class="well">
         <div style="font-size: large;">
-            Recipe name: <?php echo $this->formElement($form->get('recName')).$this->formElementErrors($form->get('recName')); ?>
+            Recipe name: <?php echo $this->formElement($addForm->get('recName')).$this->formElementErrors($addForm->get('recName')); ?>
             <?php //echo $this->formElementErrors($form->get('recName')); ?>
-            <div class="pull-right"><?php echo $this->formSubmit($form->get('submit')); ?></div>
+            <div class="pull-right"><?php echo $this->formSubmit($addForm->get('submit')); ?></div>
         </div>
 
     </div>
@@ -40,8 +41,8 @@
             </div>
             <div class="panel-body">
                 List all ingredients:
-                <?php echo $this->formElement($form->get('ingred')); ?>
-                <?php echo $this->formElementErrors($form->get('ingred')); ?>
+                <?php echo $this->formElement($addForm->get('ingred')); ?>
+                <?php echo $this->formElementErrors($addForm->get('ingred')); ?>
             </div>
         </div>
     </div>
@@ -52,8 +53,8 @@
             </div>
             <div class="panel-body">
                 Provide Instructions:
-                <?php echo $this->formElement($form->get('instruct')); ?>
-                <?php echo $this->formElementErrors($form->get('instruct')); ?>
+                <?php echo $this->formElement($addForm->get('instruct')); ?>
+                <?php echo $this->formElementErrors($addForm->get('instruct')); ?>
             </div>
 
         </div>
@@ -67,7 +68,7 @@
                 <p>Select a image to upload.</p>
                 <br>
 <!--                <input size="30" name="file" type="file">-->
-                <?php echo $this->formElement($form->get('image')); ?>
+                <?php echo $this->formElement($addForm->get('image')); ?>
             </div>
         </div>
 
@@ -81,7 +82,7 @@
                         <div class="well-sm">
                             Select Difficulty
                             <div class="pull-right">
-                                <?php echo $this->formElement($form->get('difficulty')); ?>
+                                <?php echo $this->formElement($addForm->get('difficulty')); ?>
                             </div>
                         </div>
                     </li>
@@ -91,7 +92,7 @@
                                 <div class="well-sm">
                                     Prep Time
                                     <div class="pull-right">
-                                        <?php echo $this->formElement($form->get('prepTime')); ?>
+                                        <?php echo $this->formElement($addForm->get('prepTime')); ?>
                                     </div>
                                 </div>
                             </li>
@@ -99,7 +100,7 @@
                                 <div class="well-sm">
                                     Cook Time
                                     <div class="pull-right">
-                                        <?php echo $this->formElement($form->get('cookTime')); ?>
+                                        <?php echo $this->formElement($addForm->get('cookTime')); ?>
                                     </div>
                                 </div>
                             </li>
@@ -117,11 +118,11 @@
             
                 <!-- List group -->
                 <ul class="list-group">
-                    <li class="list-group-item">Gluten Free<div class="pull-right"><?php echo  $this->formElement($form->get('glutfree')); ?></div></li>
-                    <li class="list-group-item">Low Carb<div class="pull-right"><?php echo  $this->formElement($form->get('lowcarb')); ?></div></li>
-                    <li class="list-group-item">Low calorie<div class="pull-right"><?php echo  $this->formElement($form->get('lowcal')); ?></div></li>
-                    <li class="list-group-item">Vegetarian<div class="pull-right"><?php echo  $this->formElement($form->get('veget')); ?></div></li>
-                    <li class="list-group-item">Carnivore<div class="pull-right"><?php echo  $this->formElement($form->get('carnivore')); ?></div></li>
+                    <li class="list-group-item">Gluten Free<div class="pull-right"><?php echo  $this->formElement($addForm->get('glutfree')); ?></div></li>
+                    <li class="list-group-item">Low Carb<div class="pull-right"><?php echo  $this->formElement($addForm->get('lowcarb')); ?></div></li>
+                    <li class="list-group-item">Low calorie<div class="pull-right"><?php echo  $this->formElement($addForm->get('lowcal')); ?></div></li>
+                    <li class="list-group-item">Vegetarian<div class="pull-right"><?php echo  $this->formElement($addForm->get('veget')); ?></div></li>
+                    <li class="list-group-item">Carnivore<div class="pull-right"><?php echo  $this->formElement($addForm->get('carnivore')); ?></div></li>
                 </ul>
             </div>
         </div>

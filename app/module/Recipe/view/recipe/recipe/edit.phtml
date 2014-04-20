@@ -7,19 +7,19 @@
  <h1><?php echo $this->escapeHtml($title); ?></h1>
 
  <?php
- $form = $this->form;
- $form->setAttribute('action', $this->url(
+ $addForm = $this->form;
+ $addForm->setAttribute('action', $this->url(
      'album',
      array(
          'action' => 'edit',
          'id'     => $this->id,
      )
  ));
- $form->prepare();
+ $addForm->prepare();
 
- echo $this->form()->openTag($form);
- echo $this->formHidden($form->get('id'));
- echo $this->formRow($form->get('title'));
- echo $this->formRow($form->get('artist'));
- echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->openTag($addForm);
+ echo $this->formHidden($addForm->get('id'));
+ echo $this->formRow($addForm->get('title'));
+ echo $this->formRow($addForm->get('artist'));
+ echo $this->formSubmit($addForm->get('submit'));
  echo $this->form()->closeTag();

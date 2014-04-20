@@ -9,10 +9,14 @@ namespace Fridge\Form;
      public function __construct($name = null)
      {
          // we want to ignore the name passed
-         parent::__construct('fridge');
+         parent::__construct('fridgeItem');
 
          $this->add(array(
              'name' => 'itemID',
+             'type' => 'Hidden',
+         ));
+         $this->add(array(
+             'name' => 'userID',
              'type' => 'Hidden',
          ));
          $this->add(array(
@@ -21,13 +25,35 @@ namespace Fridge\Form;
              'options' => array(
                  'label' => 'ItemName',
              ),
+             'attributes' => array(
+                 'id' => 'addItemName',
+             ),
          ));
          $this->add(array(
              'name' => 'itemAmount',
              'type' => 'Text',
+             'attributes' => array(
+                 'size' => '6',
+             ),
              'options' => array(
                  'label' => 'ItemAmount',
              ),
+         ));
+         $this->add(array(
+           'name' => 'amountType',
+           'type' => 'Select',
+           'attributes' => array(
+                 'id' => 'amountType',
+             ),
+           'options' => array(
+               'label' => 'amountType',
+               'options' => array(
+                    'lbs' => 'lbs',
+                    'units' => 'units',
+                    'oz' => 'oz',
+                    'gallons' => 'gallons',
+               ),
+           ),
          ));
          $this->add(array(
              'name' => 'expireDate',
@@ -41,7 +67,7 @@ namespace Fridge\Form;
              'type' => 'Submit',
              'attributes' => array(
                  'value' => 'Add',
-                 'id' => 'submitbutton',
+                 'id' => 'submitAdd',
              ),
          ));
          

@@ -41,7 +41,7 @@ use Zend\Db\TableGateway\TableGateway;
                      $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                      $resultSetPrototype = new ResultSet();
                      $resultSetPrototype->setArrayObjectPrototype(new Fridge());
-                     return new TableGateway('fridge_username', $dbAdapter, null, $resultSetPrototype);
+                     return new TableGateway('fridge', $dbAdapter, null, $resultSetPrototype);
                  },
              ),
          );

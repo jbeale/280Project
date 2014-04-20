@@ -1,11 +1,11 @@
 <?php
-// module/Album/view/album/album/index.phtml:
+
 $recNum = 1;
 $title = 'My Recipe';
 $this->headTitle($title);
 ?>
 <!-- <h1><?php // echo $this->escapeHtml($title);  ?></h1>-->
-<h1>Recipes</h1>
+
 <!-- <table class="table">
  <tr>
      <th>rec_Id</th>
@@ -25,14 +25,13 @@ $this->headTitle($title);
  </tr>
 <?php //endforeach; ?>
  </table>-->
-
+<h1>Recipes</h1>
 <div class="row">
     <div class="col-md-2">
         <p>
-            search filters
-        </p>
-        <p>
-            other options
+        <form method="POST" action="<?php echo $this->url('recipe') ?>" >
+            <input type="submit" name="showBook"  id="showBook" value="View Cookbook" />
+        </form>
         </p>
         <p>
             <a href="<?php echo $this->url('recipe', array('action' => 'add'));
@@ -70,6 +69,21 @@ $this->headTitle($title);
                                         <br>
                                         Difficulty: <?php echo $this->escapeHtml($recipe->difficulty); ?>
                                     </td>
+                                    <td>
+                                        <?php $bookForm->setAttribute('action', $this->url('recipe', array('action' => 'index')));
+                                        $bookForm->prepare();
+
+                                        echo $this->form()->openTag($bookForm);
+
+                                        echo $this->formHidden($bookForm->get('recID'));
+                                        ?>
+                                        <input type="hidden" name="recID" value="<?php echo $this->escapeHtml($recipe->recID); ?>"/>
+                                        <?php 
+                                        echo $this->formSubmit($bookForm->get('submitBook'));
+                                        echo $this->form()->closeTag();
+                                        ?>
+                                                                               
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -85,3 +99,27 @@ $this->headTitle($title);
 
     <div class="col-md-1"></div>
 </div>
+
+<script type="text/javascript">
+//
+//    $('.btn-info').click(function(){
+//        
+//        //alert("CLICKED " + e.target.id);
+//        //need to call cookbook module and add to table
+//        
+//        
+//        $.ajax({
+//            type: "POST",
+//            url: <?php echo $this->url('recipe', array('action' => 'saveToCookbook'));?>,
+//            data: "",
+//            success: function() {
+//                alert("AJAX call a success!");
+//            },
+//            error: function() {
+//                alert("AJAX call an epic failure");
+//            }
+//        });
+//
+//        return false;
+//    });
+</script>

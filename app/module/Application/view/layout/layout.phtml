@@ -26,6 +26,7 @@
         ->prependFile($this->basePath() . '/js/jquery.min.js')
         ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
         ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ->appendFile($this->basePath() . '/js/global.js', 'text/javascript');
     ; ?>
 </head>
 
@@ -51,9 +52,9 @@
                     <li><a href="/fridge">My Fridge</a></li>
 
                 <?php } ?>
-                <li><form class="navbar-form" role="search">
+                <li><form class="navbar-form" id="search-form" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Recipes">
+                        <input type="text" class="form-control" id="search-tf" placeholder="Search Recipes">
                     </div>
                 </form>
                 </li>

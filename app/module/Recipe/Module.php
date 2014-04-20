@@ -43,6 +43,7 @@ use Zend\Db\TableGateway\TableGateway;
                      $resultSetPrototype->setArrayObjectPrototype(new Recipe());
                      return new TableGateway('recipe', $dbAdapter, null, $resultSetPrototype);
                  },
+                 
              ),
          );
      }
